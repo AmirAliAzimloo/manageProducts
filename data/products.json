@@ -1,14 +1,1 @@
-[
-    {"id":1,
-    "name":"test1",
-    "price":1000
-    },
-    {"id":2,
-    "name":"test2",
-    "price":2000
-    },
-    {"id":3,
-    "name":"test3",
-    "price":3000
-    }
-]
+[{"id":1,"name":"test1","price":1000},{"id":2,"name":"test2","price":2000},{"id":3,"name":"test3","price":3000},{"id":1692981307328,"name":"test for post method","price":456},{"id":1692981382782,"name":"test for post method 2","price":456}]

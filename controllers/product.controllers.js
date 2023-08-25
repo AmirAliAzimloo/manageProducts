@@ -32,16 +32,24 @@ async function getById(req, res) {
 
 async function create(req, res) {
   try {
-    await ProductModel.create(
-      {
-        id: Date.now(),
-        name:"test for post",
-        price:123
-      }
-    );
-    res.writeHead(201, { "Content-Type": "application/json" });
-    res.write(JSON.stringify({message:"Products created successfully"}));
-    res.end();
+    let body = "";
+
+    // * evente gereftane data inja etefagh miyofte
+    req.on("data",(chunk)=>{
+      // console.log(chunk.toString())
+      body += chunk.toString()
+    })
+
+    // * evente end inja etefagh miyofte
+    req.on("end",async ()=>{
+      const product = {id:Date.now(),...JSON.parse(body)}
+      const result = await ProductModel.create(product);
+      res.writeHead(201, { "Content-Type": "application/json" });
+      res.write(JSON.stringify(result));
+      res.end();
+    })
+
+    
   } catch (error) {
     console.log(error)
   }
